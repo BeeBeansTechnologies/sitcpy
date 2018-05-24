@@ -99,3 +99,15 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+
+
+/dist
+/*.egg-info
+.DS_Store
+/.pydevproject
+/.settings
+/.project
+/.idea
+/.pytest_cache
+/sitcpy/templates/cui_project/run_no.txt

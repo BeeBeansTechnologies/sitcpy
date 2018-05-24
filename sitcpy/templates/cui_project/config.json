@@ -1,0 +1,38 @@
+{
+    "system":{
+        "logging_dir":"log",
+        "data_unit":8
+    },
+    "daq":{
+        "port":8082,
+        "connect":"pseudo",
+        "cwd":"../../daq",
+        "command":"python daq.py --port 8082",
+        "data_dir":"/tmp"
+    },
+    "registers":{
+        "register-set1":{
+            "start":"0x0",
+            "end":"0x100"
+        },
+        "sitcp register":{
+            "start":"0xffffff00",
+            "end":"0xffffffff"
+        }
+    },
+    "targets":{
+        "pseudo":{
+            "ip":"localhost",
+            "tcp":24242,
+            "udp":4660,
+            "port":9090,
+            "cwd":"../../emu",
+            "command":"python emu.py"
+        },
+        "product":{
+            "ip":"192.168.10.16",
+            "tcp":24,
+            "udp":4660
+        }
+    }
+}
