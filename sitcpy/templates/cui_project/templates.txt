@@ -1,0 +1,7 @@
+# Main files.
+daq.py
+pseudo.py
+config.json
+
+# Sample data for initializing registers.
+vm_init/0.bin

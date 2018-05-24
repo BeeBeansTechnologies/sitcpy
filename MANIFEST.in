@@ -1,0 +1,6 @@
+include *.md
+include LICENSE
+
+include sitcpy/templates/cui_project/config.json
+include sitcpy/templates/cui_project/templates.txt
+include sitcpy/templates/cui_project/vm_init/0.bin
