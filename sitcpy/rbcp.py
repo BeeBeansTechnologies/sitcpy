@@ -11,7 +11,7 @@ import select
 import socket
 import struct
 
-from sitcpy import to_bytearray, to_bytes
+from sitcpy import is_int, to_bytearray, to_bytes
 
 
 class RbcpError(Exception):
@@ -100,9 +100,9 @@ class Rbcp(object):
         :type packet_id: int
         :rtype: bytes
         """
-        if not isinstance(register_address, int):
+        if not is_int(register_address):
             raise ValueError("Register address must be an int.")
-        if not isinstance(length, int):
+        if not is_int(length):
             raise ValueError("Register address must be an int.")
 
         if register_address < 0 or register_address > 0xffffffff:

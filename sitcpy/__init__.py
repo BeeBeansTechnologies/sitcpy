@@ -89,14 +89,17 @@ class State(object):
         :return: Returns True if the condition is satisfied, False if it times out.
         """
         with self._cond:
-            end = time.time() + (timeout or 31536000)
+            end = time.time() + (timeout or 0)
             while True:
                 if self._state >= state:
                     return True
-                now = time.time()
-                if now > end:
-                    return False  # timeout
-                self._cond.wait(end - now)
+                if timeout is None:
+                    self._cond.wait()
+                else:
+                    now = time.time()
+                    if now > end:
+                        return False  # timeout
+                    self._cond.wait(end - now)
 
 
 # noinspection PyUnresolvedReferences
@@ -108,6 +111,16 @@ def is_unicode(val):
         return isinstance(val, unicode)
     else:
         return isinstance(val, str)
+
+
+def is_int(val):
+    """
+    If the value is a int, it returns True.
+    """
+    if PY2:
+        return isinstance(val, (int, long))
+    else:
+        return isinstance(val, int)
 
 
 # noinspection PyUnresolvedReferences
